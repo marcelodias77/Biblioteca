@@ -2,7 +2,6 @@ import sqlite3
 
 
 
-
 #"Etapa 1 - Criação do banco e tabela"
 def criar_tabela():
     conexao = sqlite3.connect("biblioteca.db")
@@ -40,3 +39,34 @@ def listar_livros():
     cursor.execute("SELECT * FROM livros")
     for linha in cursor.fetchall():
         print(f" ID {linha[0]} | TITULO {linha[1]} | AUTOR {linha[2]} | ANO {linha[3]} | DISPONIVEL {linha[4]}")
+
+#Etapa 4 - Atualização de disponibilidade
+def alte_dispo():
+    conexao = sqlite3.connect("biblioteca.db")
+    cursor = conexao.cursor()
+    
+    id_livro = int(input("Digite o ID do livro que deseja alterar: "))
+
+    cursor.execute("SELECT disponivel FROM livros WHERE id = ?", (id_livro,))
+    resultado = cursor.fetchone()
+
+    if resultado is None:
+        print("Livro não encontrado")
+    else:
+        dispo_atual = resultado[0]
+        if dispo_atual == "Sim":
+            novo_status = "Não"
+        elif dispo_atual == "Não":
+            novo_status = "Sim"
+        else:
+            print("Valor de disponibilidade inválido")
+        return
+    cursor.execute("""
+        UPDATE livros
+        SET disponivel = ?
+        WHERE id = ?
+        """, (novo_status, id_livro))
+    conexao.commit()
+    conexao.close()
+    alte_dispo()
+    
