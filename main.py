@@ -68,5 +68,28 @@ def alte_dispo():
         """, (novo_status, id_livro))
     conexao.commit()
     conexao.close()
-    alte_dispo()
+
+#Etapa 5 - remoção de livros
+def del_livro(id_aluno):
+    try:
+        conexao = sqlite3.connect("biblioteca.db")
+        cursor = conexao.cursor()
+        id_aluno = int(input("Digite o id que deseja deletar: "))
+        cursor.execute("DELETE FROM livros WHERE id = ?", (id_aluno))
+
+
+        if cursor.rowcount > 0:
+            print("Livro removido com sucesso")
+        else:
+            print("Nenhum livro encontrado com o ID digitado")
+
+    except Exception as erro:
+        print(f"Erro ao tentar excluir aluno: {erro}")
+
+        conexao.commit()
+    finally:
+        if conexao:
+            conexao.close()
+    deletar = input("Digite o id do livro que deseja deletar: ")
+    del_livro(deletar)
     
