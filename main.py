@@ -1,9 +1,10 @@
 import sqlite3
 
-conexao = sqlite3.connect("biblioteca.db")
 
+conexao = sqlite3.connect("biblioteca.db")
 cursor = conexao.cursor()
 
+#"Etapa 1 - Criação do banco e tabela"
 def criar_tabela():
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS alunos (
@@ -14,3 +15,5 @@ def criar_tabela():
     disponivel TEXT
         )
     """)
+criar_tabela()
+
