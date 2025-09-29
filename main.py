@@ -33,4 +33,10 @@ def cadastra_livro():
     )
     conexao.commit()
     conexao.close()
-cadastra_livro()
+#Etapa 3 - listagem de livros
+def listar_livros():
+    conexao = sqlite3.connect("biblioteca.db")
+    cursor = conexao.cursor()
+    cursor.execute("SELECT * FROM livros")
+    for linha in cursor.fetchall():
+        print(f" ID {linha[0]} | TITULO {linha[1]} | AUTOR {linha[2]} | ANO {linha[3]} | DISPONIVEL {linha[4]}")
