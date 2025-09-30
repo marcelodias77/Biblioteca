@@ -1,0 +1,156 @@
+
+````markdown
+# 📚 Biblioteca de Livros
+
+**`biblioteca_livros`** é uma biblioteca Python simples para gerenciar e organizar livros. Com ela, você pode adicionar, remover, listar, e buscar livros de forma fácil e rápida. Ideal para quem deseja gerenciar uma coleção digital de livros de maneira prática!
+
+---
+
+## 🚀 Instalação
+
+Para instalar a biblioteca, basta usar o `pip`:
+
+```bash
+pip install biblioteca-livros
+````
+
+Ou, se preferir, você pode clonar o repositório e instalar manualmente:
+
+```bash
+git clone https://github.com/usuario/biblioteca-livros.git
+cd biblioteca-livros
+pip install .
+```
+
+---
+
+## 🛠️ Funcionalidades
+
+### 1️⃣ **Adicionar Livro**
+
+Adicione um novo livro à sua coleção.
+
+#### `biblioteca_livros.adicionar_livro(titulo, autor, ano, genero)`
+
+**Exemplo de uso:**
+
+```python
+from biblioteca_livros import adicionar_livro
+
+adicionar_livro("O Senhor dos Anéis", "J.R.R. Tolkien", 1954, "Fantasia")
+```
+
+---
+
+### 2️⃣ **Remover Livro**
+
+Remova um livro da coleção usando o título.
+
+#### `biblioteca_livros.remover_livro(titulo)`
+
+**Exemplo de uso:**
+
+```python
+from biblioteca_livros import remover_livro
+
+remover_livro("O Senhor dos Anéis")
+```
+
+---
+
+### 3️⃣ **Listar Livros**
+
+Liste todos os livros armazenados na biblioteca.
+
+#### `biblioteca_livros.listar_livros()`
+
+**Exemplo de uso:**
+
+```python
+from biblioteca_livros import listar_livros
+
+livros = listar_livros()
+for livro in livros:
+    print(f"{livro['titulo']} - {livro['autor']} ({livro['ano']})")
+```
+
+---
+
+### 4️⃣ **Buscar Livro por Título**
+
+Busque um livro específico pelo título.
+
+#### `biblioteca_livros.buscar_livro_por_titulo(titulo)`
+
+**Exemplo de uso:**
+
+```python
+from biblioteca_livros import buscar_livro_por_titulo
+
+livro = buscar_livro_por_titulo("O Senhor dos Anéis")
+print(livro)
+# Saída: {'titulo': 'O Senhor dos Anéis', 'autor': 'J.R.R. Tolkien', 'ano': 1954, 'genero': 'Fantasia'}
+```
+
+---
+
+### 5️⃣ **Buscar Livros por Autor**
+
+Encontre todos os livros de um autor específico.
+
+#### `biblioteca_livros.buscar_livros_por_autor(autor)`
+
+**Exemplo de uso:**
+
+```python
+from biblioteca_livros import buscar_livros_por_autor
+
+livros_tolkien = buscar_livros_por_autor("J.R.R. Tolkien")
+for livro in livros_tolkien:
+    print(f"{livro['titulo']} ({livro['ano']})")
+```
+
+---
+
+## 📊 Estrutura de Dados
+
+Os livros são armazenados em um dicionário com as seguintes chaves:
+
+* **`titulo`** (str): O título do livro.
+* **`autor`** (str): O autor do livro.
+* **`ano`** (int): O ano de publicação.
+* **`genero`** (str): O gênero literário.
+
+**Exemplo de livro armazenado:**
+
+```python
+{
+    "titulo": "O Senhor dos Anéis",
+    "autor": "J.R.R. Tolkien",
+    "ano": 1954,
+    "genero": "Fantasia"
+}
+```
+
+---
+
+## 💡 Contribuindo
+
+1. Faça um fork do repositório.
+2. Crie uma nova branch: `git checkout -b feature/nova-funcionalidade`.
+3. Realize as alterações desejadas.
+4. Envie um pull request: `git push origin feature/nova-funcionalidade`.
+
+*Dica:* Não se esqueça de escrever testes para garantir que tudo esteja funcionando corretamente!
+
+---
+
+## 🧪 Testes
+
+Para rodar os testes, você pode usar o `pytest`:
+
+```bash
+pytest
+```
+
+---
